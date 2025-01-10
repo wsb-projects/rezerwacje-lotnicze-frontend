@@ -1,0 +1,216 @@
+.register-section {
+    padding: 80px 0;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-color);
+}
+
+.register-section .container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.register-section h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.password-strength {
+    margin-bottom: 20px;
+}
+
+#password-strength-bar {
+    height: 5px;
+    background-color: var(--gray);
+    margin-bottom: 5px;
+}
+
+#password-strength-text {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary i {
+    margin-right: 10px;
+}
+
+.register-options {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.social-register {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn-social {
+    flex: 1;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-social i {
+    margin-right: 10px;
+}
+
+.register-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-color);
+}
+
+.register-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Animations */
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+[data-aos] {
+    opacity: 0;
+    transition-property: opacity, transform;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
+.register-section {
+    padding: 80px 0;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-color);
+}
+
+.register-section .container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.register-section h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.password-strength {
+    margin-bottom: 20px;
+}
+
+#password-strength-bar {
+    height: 5px;
+    background-color: var(--gray);
+    margin-bottom: 5px;
+}
+
+#password-strength-text {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.register-section .btn-primary {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-section .btn-primary i {
+    margin-right: 10px;
+}
+
+.register-options {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.social-register {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn-social {
+    flex: 1;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-social i {
+    margin-right: 10px;
+}
+
+.register-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-color);
+}
+
+.register-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}

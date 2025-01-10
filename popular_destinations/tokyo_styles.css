@@ -1,0 +1,130 @@
+.tokyo-hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/tokyo-hero-image.jpg') center/cover no-repeat;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tokyo-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+}
+
+.tokyo-hero p {
+    font-size: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.destination-info {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
+
+.tokyo-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tokyo-card h2 {
+    color: #e74c3c;
+    font-family: 'Playfair Display', serif;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 0.5rem;
+}
+
+.tokyo-card h2:first-child {
+    margin-top: 0;
+}
+
+.attractions-list, .reasons-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.attractions-list li, .reasons-list li {
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.attractions-list li:hover, .reasons-list li:hover {
+    transform: translateX(10px);
+}
+
+.attractions-list i, .reasons-list i {
+    color: #e74c3c;
+    margin-right: 0.5rem;
+    width: 20px;
+    text-align: center;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-primary {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #c0392b;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .tokyo-hero h1 {
+        font-size: 3rem;
+    }
+
+    .tokyo-hero p {
+        font-size: 1.2rem;
+    }
+
+    .tokyo-card {
+        padding: 1.5rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

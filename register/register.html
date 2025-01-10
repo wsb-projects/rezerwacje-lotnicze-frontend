@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SkyBooker</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css for additional animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- AOS (Animate On Scroll) library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="/my_project_root/main/styles.css">
+    <link rel="stylesheet" href="/my_project_root/register/register_styles.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">Sky<span>Booker</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#search">Search</a></li>
+                <li><a href="index.html#destinations">Destinations</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="/my_project_root/login/login.html" class="btn btn-primary">Login</a>
+                <a href="/my_project_root/register/register.html" class="btn btn-outline">Sign Up</a>
+            </div>
+            <button id="dark-mode-toggle" class="btn-icon">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="mobile-menu-toggle" class="btn-icon mobile-only">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="register-section">
+            <div class="container">
+                <h1 class="animate__animated animate__fadeInDown">Create Your Account</h1>
+                <form id="register-form" class="animate__animated animate__fadeInUp" data-aos="fade-up">
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="password-strength">
+                        <div id="password-strength-bar"></div>
+                        <span id="password-strength-text"></span>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="terms">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            I agree to the <a href="#">Terms and Conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i> Sign Up</button>
+                </form>
+                <div class="register-options">
+                    <p>Or sign up with:</p>
+                    <div class="social-register">
+                        <button class="btn btn-outline btn-social"><i class="fab fa-google"></i> Google</button>
+                        <button class="btn btn-outline btn-social"><i class="fab fa-facebook-f"></i> Facebook</button>
+                    </div>
+                </div>
+                <p class="register-footer">
+                    Already have an account? <a href="/my_project_root/login/login.html">Login here</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>SkyBooker</h3>
+                    <p>Your trusted partner for flight bookings</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#search">Search</a></li>
+                        <li><a href="index.html#destinations">Destinations</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="btn-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="btn-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn-icon"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 SkyBooker. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cookie-consent" class="hidden">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+        <button id="accept-cookies" class="btn btn-primary">Accept</button>
+        <button id="reject-cookies" class="btn btn-outline">Reject</button>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="/my_project_root/main/script.js"></script>
+    <script src="/my_project_root/register/register.js"></script>
+</body>
+</html>
