@@ -3,138 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyBooker - Your Ultimate Flight Booking Experience</title>
+    <title>Flight Booking System</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Animate.css for additional animations -->
+    <!-- Libraries CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    
-    <!-- AOS (Animate On Scroll) library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    
-    <!-- Swiper for carousels -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    
-    <!-- Flatpickr for date picking -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     
-    <!-- Micromodal for lightweight modals -->
-    <link rel="stylesheet" href="https://unpkg.com/micromodal/dist/micromodal.css">
-    
-    <!-- Tippy.js for tooltips -->
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css">
-    
-    <!-- Your custom CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="/my_project_root/main/styles.css">
 </head>
 <body>
     <header>
         <nav class="container">
-            <a href="#" class="logo">Sky<span>Booker</span></a>
+            <a href="#" class="logo">Flight<span>Booker</span></a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#search">Search</a></li>
-                <li><a href="/my_project_root/destinations/destinations.html">Destinations</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-buttons">
-                <a href="/my_project_root/login/login.html" class="btn btn-outline">Login</a>
-                <a href="register\register.html" class="btn btn-primary">Sign Up</a>
+                <a href="#" class="btn btn-outline">Login</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
             </div>
-            </div>
-            <button id="dark-mode-toggle" class="btn-icon">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button id="mobile-menu-toggle" class="btn-icon mobile-only">
+            <button id="mobile-menu-toggle" class="mobile-menu">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h1 class="animate__animated animate__fadeInDown">Discover the World with SkyBooker</h1>
-                <p class="animate__animated animate__fadeInUp">Book your next adventure with ease and confidence</p>
-                <a href="#search" class="btn btn-primary animate__animated animate__fadeInUp"><i class="icon fas fa-plane"></i>Start Your Journey</a>
-            </div>
-        </section>
-
         <section id="search" class="search-section">
             <div class="container">
-                <h2 data-aos="fade-up">Find Your Perfect Flight</h2>
+                <h2 data-aos="fade-up">Find Your Flight</h2>
                 <form id="flight-search-form" data-aos="fade-up">
+                    <div class="form-group">
+                        <i class="fas fa-fingerprint"></i>
+                        <input type="text" id="flight-id" name="flight-id" placeholder="Flight ID (Optional)">
+                    </div>
+
                     <div class="form-group">
                         <i class="fas fa-plane-departure"></i>
                         <input type="text" id="departure" name="departure" placeholder="From" required>
                     </div>
+
                     <div class="form-group">
                         <i class="fas fa-plane-arrival"></i>
                         <input type="text" id="arrival" name="arrival" placeholder="To" required>
                     </div>
+
                     <div class="form-group">
                         <i class="fas fa-calendar"></i>
                         <input type="text" id="depart-date" name="depart-date" placeholder="Departure Date" required>
                     </div>
+
                     <div class="form-group">
-                        <i class="fas fa-calendar"></i>
-                        <input type="text" id="return-date" name="return-date" placeholder="Return Date">
+                        <i class="fas fa-calendar-check"></i>
+                        <input type="text" id="return-date" name="return-date" placeholder="Return Date" required>
                     </div>
-                    <div class="form-group">
-                        <i class="fas fa-user"></i>
-                        <input type="number" id="passengers" name="passengers" placeholder="Passengers" min="1" max="9" value="1" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Search Flights</button>
+
+                    <button type="submit" class="btn btn-primary search-btn">
+                        <i class="fas fa-search"></i> Search Flights
+                    </button>
                 </form>
             </div>
         </section>
 
-        <section id="destinations" class="destinations-section">
+        <section id="search-results" class="search-results-section hidden">
             <div class="container">
-                <h2 data-aos="fade-up">Popular Destinations</h2>
-                <div class="destinations-grid" data-aos="fade-up">
-                    <a href="/my_project_root/popular_destinations/paris.html" class="destination-card paris">
-                        <h3>Paris, France</h3>
-                        <p>Experience the romance and charm of the City of Light.</p>
-                    </a>
-                    <a href="/my_project_root/popular_destinations/tokyo.html" class="destination-card tokyo">
-                        <h3>Tokyo, Japan</h3>
-                        <p>Immerse yourself in a vibrant blend of tradition and modernity.</p>
-                    </a>
-                    <a href="/my_project_root/popular_destinations/newyork.html" class="destination-card newyork">
-                        <h3>New York, USA</h3>
-                        <p>Discover the excitement of the city that never sleeps.</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-
-        <section id="about" class="about-section">
-            <div class="container">
-                <h2 data-aos="fade-up">Why Choose SkyBooker?</h2>
-                <div class="features-grid">
-                    <div class="feature-card" data-aos="fade-up">
-                        <i class="fas fa-globe"></i>
-                        <h3>Wide Selection</h3>
-                        <p>Access to thousands of flights worldwide</p>
-                    </div>
-                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-dollar-sign"></i>
-                        <h3>Best Prices</h3>
-                        <p>Competitive prices and exclusive deals</p>
-                    </div>
-                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-headset"></i>
-                        <h3>24/7 Support</h3>
-                        <p>Round-the-clock customer assistance</p>
-                    </div>
+                <h2>Available Flights</h2>
+                <div class="results-grid">
+                    <!-- Results will be populated by JavaScript -->
                 </div>
             </div>
         </section>
@@ -144,102 +90,72 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>SkyBooker</h3>
-                    <p>Your trusted partner for flight bookings</p>
+                    <h3>FlightBooker</h3>
+                    <p>Your ultimate flight booking platform</p>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#search">Search</a></li>
-                        <li><a href="/my_project_root/destinations/destinations.html">Destinations</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="/my_project_root/contact/contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Follow Us</h3>
-                    <div class="social-icons">
-                        <a href="#" class="btn-icon" data-tippy-content="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="btn-icon" data-tippy-content="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="btn-icon" data-tippy-content="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="btn-icon" data-tippy-content="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    </div>
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@flightbooker.com</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 SkyBooker. All rights reserved.</p>
+                <p>&copy; 2025 FlightBooker. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div class="modal micromodal-slide" id="modal-login" aria-hidden="true">
-        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-login-title">
-                <header class="modal__header">
-                    <h2 id="modal-login-title">Login</h2>
-                    <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-                </header>
-                <main class="modal__content" id="modal-login-content">
-                    <form id="login-form">
-                        <div class="form-group">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" id="login-email" name="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" id="login-password" name="password" placeholder="Password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </main>
-            </div>
+    <!-- Booking Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Complete Your Booking</h2>
+            <form id="booking-form">
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="first-name" name="firstName" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="last-name" name="lastName" placeholder="Last Name" required>
+                </div>
+                <div class="booking-details">
+                    <div class="detail-item">
+                        <span class="label">Booking ID:</span>
+                        <span id="booking-id" class="value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Flight:</span>
+                        <span id="flight-details" class="value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Seat:</span>
+                        <span id="seat-number" class="value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Price:</span>
+                        <span id="flight-price" class="value"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+            </form>
         </div>
-    </div>
-
-    <!-- Sign Up Modal -->
-    <div class="modal micromodal-slide" id="modal-signup" aria-hidden="true">
-        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-signup-title">
-                <header class="modal__header">
-                    <h2 id="modal-signup-title">Sign Up</h2>
-                    <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-                </header>
-                <main class="modal__content" id="modal-signup-content">
-                    <form id="signup-form">
-                        <div class="form-group">
-                            <i class="fas fa-user"></i>
-                            <input type="text" id="signup-name" name="name" placeholder="Full Name" required>
-                        </div>
-                        <div class="form-group">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" id="signup-email" name="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" id="signup-password" name="password" placeholder="Password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
-                    </form>
-                </main>
-            </div>
-        </div>
-    </div>
-
-    <div id="cookie-consent" class="hidden">
-        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
-        <button id="accept-cookies" class="btn btn-primary">Accept</button>
-        <button id="reject-cookies" class="btn btn-outline">Reject</button>
     </div>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="/my_project_root/main/flightData.js"></script>
     <script src="/my_project_root/main/script.js"></script>
 </body>
 </html>
