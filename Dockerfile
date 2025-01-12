@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-WORKDIR /usr/share/nginx/html/my_project_root
+WORKDIR /usr/share/nginx/html
 
 COPY login ./login
 COPY main ./main
