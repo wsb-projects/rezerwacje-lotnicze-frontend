@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Booking System</title>
+    <style>
+        .nav-bar {
+            background-color: #333;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+        .nav-bar a:hover {
+            background-color: #555;
+        }
+        .user-email {
+            color: #fff;
+            background-color: #444;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+        .flights-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .flights-table th, .flights-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .flights-table th {
+            background-color: #f5f5f5;
+        }
+        .book-button {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .book-button:hover {
+            background-color: #0056b3;
+        }
+        .flash-message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .booking-form input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="logo">Flight Booking System</div>
+        <div class="nav-links">
+            {% if session.get('user_email') %}
+                <span class="user-email">{{ session.get('user_email') }}</span>
+                <a href="{{ url_for('my_tickets') }}">My Tickets</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div style="padding: 20px;">
+        <h2>Available Flights</h2>
+        <table class="flights-table">
+            <thead>
+                <tr>
+                    <th>Flight ID</th>
+                    <th>Type</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                    <th>Details</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flights %}
+                <tr>
+                    <td>{{ flight.id }}</td>
+                    <td>{{ "Passenger" if flight.flightType == 0 else "Cargo" }}</td>
+                    <td>{{ flight.departureLocation }}</td>
+                    <td>{{ flight.arrivalLocation }}</td>
+                    <td>{{ flight.departureDate }}</td>
+                    <td>{{ flight.arrivalDate }}</td>
+                    <td>
+                        {% if flight.flightType == 0 %}
+                            Seats: {{ flight.seatsCapacity }}<br>
+                            Price: ${{ flight.seatPrice }}
+                        {% else %}
+                            Max Weight: {{ flight.cargoWeight }}kg<br>
+                            Max Volume: {{ flight.cargoVolume }}m³
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if session.get('user_email') %}
+                            <form class="booking-form" method="POST" action="{{ url_for('book_ticket') }}">
+                                <input type="hidden" name="flight_id" value="{{ flight.id }}">
+                                <button type="submit" class="book-button">Book Flight</button>
+                            </form>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="book-button">Login to Book</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
