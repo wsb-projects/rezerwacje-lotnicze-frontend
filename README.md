@@ -23,7 +23,7 @@ The **Flight Reservations - Frontend** application is powered by Flask in Python
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/wsb-projects/rezerwacje-lotnicze-frontend.git
+    git clone "https://github.com/wsb-projects/rezerwacje-lotnicze-frontend.git"
     ```
 2. Navigate to the project directory:
     ```bash
