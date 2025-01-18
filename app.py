@@ -4,7 +4,7 @@ from functools import wraps
 from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'
+app.secret_key = '46420083729x973939728290'
 
 BASE_URL = 'http://localhost:8080'
 FLIGHTS_STORAGE = []
