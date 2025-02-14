@@ -1,17 +1,25 @@
-FROM python:3.9-slim
-
+FROM node AS builder
 WORKDIR /app
+RUN npm install -g pnpm
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY package.json .
+COPY pnpm-lock.yaml .
 
-COPY templates templates
-COPY requirements.txt requirements.txt
-COPY app.py app.py
+RUN pnpm install
 
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=development
+COPY tsconfig.json .
+COPY env.d.ts .
+COPY tsconfig.app.json .
+COPY tsconfig.node.json .
 
-EXPOSE 5000
+COPY vite.config.ts .
+COPY eslint.config.js .
 
-CMD ["flask", "run", "--host=0.0.0.0"]
+COPY public ./public
+COPY src ./src
+COPY index.html .
+
+RUN pnpm build
+
+FROM nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
