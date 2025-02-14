@@ -2,7 +2,7 @@ FROM node AS builder
 WORKDIR /app
 
 COPY package.json .
-COPY package-lock.yaml .
+COPY package-lock.json .
 
 RUN npm install
 
