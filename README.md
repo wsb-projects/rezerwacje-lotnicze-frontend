@@ -1,54 +1,61 @@
-# ✈️ Flight Reservations - Frontend
+# vite-frontend
 
-## 📖 Description
-The **Flight Reservations - Frontend** application is powered by Flask in Python. It allows users to search for available flights and book airline tickets while communicating with a C# backend for booking logic and data management.
+This template should help get you started developing with Vue 3 in Vite.
 
-## 🌟 Features
-- 🔑 User registration and login
-- 🔍 Searching for available flights
-- ✈️ Booking airline tickets
-- 🗂️ Managing reservations
-- 📧 Email notifications about reservation status
+## Recommended IDE Setup
 
-## 🛠 Technologies
-- **Python (Flask)** for the main application
-- **HTML / CSS / JavaScript** for the user interface
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## 📋 Requirements
-- Python 3.x
-- Flask (and other dependencies in requirements.txt)
-- A running C# backend (see the backend repository: https://github.com/wsb-projects/rezerwacje-lotnicze)
+## Type Support for `.vue` Imports in TS
 
-## 🚀 Installation
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
-1. Clone this repository:
-    ```bash
-    git clone "https://github.com/wsb-projects/rezerwacje-lotnicze-frontend.git"
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd rezerwacje-lotnicze-frontend
-    ```
-3. Install required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4. Run the Flask server:
-    ```bash
-    python app.py
-    ```
-    By default, the application will be available at http://127.0.0.1:5000.
+## Customize configuration
 
-## 🖥 Usage
-- Launch the application and open the provided address in your browser.
-- Register or log in to your account.
-- Search for flights, book tickets, and manage existing reservations.
+See [Vite Configuration Reference](https://vite.dev/config/).
 
-## 👥 Contribution
-- Fork the repository and create a pull request with your proposed changes.
-- Report any issues or suggestions in the Issues section.
+## Project Setup
 
-## 👨‍💻 Authors
-- Jakub Krzyzowski
-- Wojciech Nawa
-- Dominik Kielkowski
+```sh
+pnpm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+pnpm dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+pnpm build
+```
+
+### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
+
+```sh
+pnpm test:unit:dev # or `pnpm test:unit` for headless testing
+```
+
+### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+
+```sh
+pnpm test:e2e:dev
+```
+
+This runs the end-to-end tests against the Vite development server.
+It is much faster than the production build.
+
+But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+
+```sh
+pnpm build
+pnpm test:e2e
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+pnpm lint
+```
