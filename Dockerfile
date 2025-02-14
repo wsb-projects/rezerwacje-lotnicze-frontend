@@ -18,7 +18,7 @@ COPY public ./public
 COPY src ./src
 COPY index.html .
 
-RUN npm build
+RUN npm run build
 
 FROM nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
