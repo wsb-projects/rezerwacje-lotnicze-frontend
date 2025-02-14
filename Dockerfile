@@ -1,11 +1,10 @@
 FROM node AS builder
 WORKDIR /app
-RUN npm install -g pnpm
 
 COPY package.json .
-COPY pnpm-lock.yaml .
+COPY package-lock.yaml .
 
-RUN pnpm install
+RUN npm install
 
 COPY tsconfig.json .
 COPY env.d.ts .
@@ -19,7 +18,7 @@ COPY public ./public
 COPY src ./src
 COPY index.html .
 
-RUN pnpm build
+RUN npm build
 
 FROM nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
