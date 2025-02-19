@@ -1,17 +1,19 @@
-FROM python:3.9-slim
+FROM oven/bun:1 AS base
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY ./package.json ./
+COPY ./bun.lock ./
 
-COPY templates templates
-COPY requirements.txt requirements.txt
-COPY app.py app.py
+RUN bun install
 
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=development
+COPY ./svelte.config.js ./
+COPY ./tsconfig.json ./
+COPY ./vite.config.ts ./
+COPY static/ ./static
+COPY src/ ./src
 
-EXPOSE 5000
+RUN bun run build
 
-CMD ["flask", "run", "--host=0.0.0.0"]
+FROM nginx
+COPY --from=base /app/build /usr/share/nginx/html
