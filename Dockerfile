@@ -7,11 +7,11 @@ COPY ./bun.lock ./
 
 RUN bun install
 
-COPY src/ ./
-COPY static/ ./
 COPY ./svelte.config.js ./
 COPY ./tsconfig.json ./
 COPY ./vite.config.ts ./
+COPY static/ ./static
+COPY src/ ./src
 
 RUN bun run build
 
