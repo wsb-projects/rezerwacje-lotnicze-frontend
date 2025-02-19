@@ -44,9 +44,6 @@
 </script>
 
 <div class="flex flex-col gap-y-5">
-	<h1 class="mx-auto text-2xl">Tickets</h1>
-	<!-- svelte-ignore element_invalid_self_closing_tag -->
-	<div class="divider" />
 	{#each tickets as flight}
 		<DataCard data={flight} extractor={ticketExtractor}>
 			{#snippet header(ticket: Ticket)}

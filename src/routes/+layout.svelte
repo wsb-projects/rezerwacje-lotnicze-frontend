@@ -7,6 +7,7 @@
 	import ThemeChooser from '@components/ThemeChooser.svelte';
 	import SvelteLogo from 'virtual:icons/logos/svelte-icon';
 	import { isAuthBad, isRegisterBad } from '$lib/foreign/api.svelte';
+	import { page } from '$app/state';
 	let { children } = $props();
 
 	var login_form = $state<HTMLDialogElement>();
@@ -34,21 +35,32 @@
 			await login(email, password);
 		}
 	}
+
+	const title = $derived(
+		[...page.url.pathname.split('/').slice(1)]
+			.filter(Boolean)
+			.map((v: string) => v.charAt(0).toUpperCase() + v.slice(1))
+			.join(' - ')
+	);
 </script>
 
-<div class="navbar bg-base-100 sticky top-0 z-50 mb-3 shadow-sm">
-	<div class="avatar mx-3">
-		<SvelteLogo />
+<div class="navbar bg-base-100 sticky top-0 z-50 mb-3 grid grid-cols-3 shadow-sm">
+	<div class="flex items-center justify-start">
+		<div class="avatar mx-3">
+			<SvelteLogo />
+		</div>
+		<nav class="join">
+			<a href="/flights" class={[{ 'join-item': auth.isAuthed() }, 'btn', 'btn-outline']}>Flights</a
+			>
+			<a href="/tickets" class={['join-item', 'btn', 'btn-outline', { hidden: !auth.isAuthed() }]}
+				>Tickets</a
+			>
+		</nav>
 	</div>
-	<nav class="join flex-1">
-		<a href="/" class={[{ 'join-item': auth.isAuthed() }, 'btn', 'btn-outline']}>Flights</a>
-		<a href="/tickets" class={['join-item', 'btn', 'btn-outline', { hidden: !auth.isAuthed() }]}
-			>Tickets</a
-		>
-	</nav>
-	<div>
+	<h1 class="text-center text-2xl">{title}</h1>
+	<div class="flex items-center justify-end">
 		{#if auth.isAuthed()}
-			<div class="join">
+			<div class="join h-fit">
 				<div class="join-item input input-bordered flex items-center">user@example.com</div>
 				<a href="/" class="btn join-item btn-outline btn-error" onclick={() => auth.reset()}
 					>Logout</a
@@ -60,7 +72,6 @@
 		{/if}
 		<ThemeChooser />
 	</div>
-	<Toast position="bottom-end" />
 </div>
 
 <div
@@ -68,3 +79,4 @@
 >
 	{@render children()}
 </div>
+<Toast position="bottom-end" />
