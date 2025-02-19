@@ -1,17 +1,14 @@
-FROM python:3.9-slim
+FROM oven/bun:1 AS base
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY ./package.json ./
+COPY ./bun.lock ./
 
-COPY templates templates
-COPY requirements.txt requirements.txt
-COPY app.py app.py
+RUN bun install
 
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=development
-
-EXPOSE 5000
-
-CMD ["flask", "run", "--host=0.0.0.0"]
+COPY src/ ./
+COPY static/ ./
+COPY ./svelte.config.js ./
+COPY ./tsconfig.json ./
+COPY ./vite.config.ts ./
