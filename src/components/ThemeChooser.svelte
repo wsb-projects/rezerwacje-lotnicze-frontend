@@ -1,43 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	const themes = [
-		'light',
-		'dark',
-		'cupcake',
-		'bumblebee',
-		'emerald',
-		'corporate',
-		'synthwave',
-		'retro',
-		'cyberpunk',
-		'valentine',
-		'halloween',
-		'garden',
-		'forest',
-		'aqua',
-		'lofi',
-		'pastel',
-		'fantasy',
-		'wireframe',
-		'black',
-		'luxury',
-		'dracula',
-		'cmyk',
-		'autumn',
-		'business',
-		'acid',
-		'lemonade',
-		'night',
-		'coffe',
-		'winter',
-		'dim',
-		'nord',
-		'sunset',
-		'caramellatte',
-		'abyss',
-		'silk'
-	].sort();
+	const themes = ['wireframe', 'cyberpunk', 'retro', 'valentine', 'black', 'dracula', 'sky'].sort();
 
 	var theme = $state('corporate');
 

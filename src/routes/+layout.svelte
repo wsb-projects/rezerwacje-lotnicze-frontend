@@ -49,7 +49,7 @@
 		<div class="avatar mx-3">
 			<SvelteLogo />
 		</div>
-		<nav class="join">
+		<nav class={[{ join: auth.isAuthed() }]}>
 			<a href="/flights" class={[{ 'join-item': auth.isAuthed() }, 'btn', 'btn-outline']}>Flights</a
 			>
 			<a href="/tickets" class={['join-item', 'btn', 'btn-outline', { hidden: !auth.isAuthed() }]}
