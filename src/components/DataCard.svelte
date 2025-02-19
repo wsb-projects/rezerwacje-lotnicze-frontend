@@ -15,7 +15,7 @@
 	const { extractor = objectKeys, data, header, actions }: Props = $props();
 </script>
 
-<div class="card shadow">
+<div class="card border border-(--color-base-300) shadow">
 	<div class="card-body">
 		{#if header !== undefined}
 			{@render header(data)}

@@ -63,6 +63,8 @@
 	<Toast position="bottom-end" />
 </div>
 
-<div class="mx-auto h-fit min-h-full max-w-2xl border-x border-(--color-neutral) p-10">
+<div
+	class="mx-auto h-fit min-h-full max-w-2xl border border-(--color-base-300) bg-(--color-base-100) p-10"
+>
 	{@render children()}
 </div>
