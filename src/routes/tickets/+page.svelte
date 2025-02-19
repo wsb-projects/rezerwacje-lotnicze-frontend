@@ -5,8 +5,9 @@
 	import TicketIcon from 'virtual:icons/ph/ticket';
 
 	import type { Ticket } from '$lib/foreign/types';
-	import DataCard from '../../components/DataCard.svelte';
+	import DataCard from '@components/DataCard.svelte';
 	import { isCargoTicket, isPassengerTicket } from '$lib/foreign/api.svelte';
+	import { toast } from 'svelte-daisy-toast';
 
 	var tickets: Ticket[] = $state([]);
 
@@ -14,7 +15,10 @@
 		if (!auth.isAuthed()) {
 			return;
 		}
-		const res = await auth.getTickets();
+		const res = await auth.getTickets().catch(() => {
+			toast({ message: 'Failed to fetch tickets', type: 'error' });
+			return [];
+		});
 		tickets = res;
 	});
 
@@ -41,6 +45,7 @@
 
 <div class="flex flex-col gap-y-5">
 	<h1 class="mx-auto text-2xl">Tickets</h1>
+	<!-- svelte-ignore element_invalid_self_closing_tag -->
 	<div class="divider" />
 	{#each tickets as flight}
 		<DataCard data={flight} extractor={ticketExtractor}>

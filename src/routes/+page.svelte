@@ -10,13 +10,17 @@
 		type TicketReqCargo,
 		type TicketReqPassenger
 	} from '$lib/foreign/types';
-	import DataCard from '../components/DataCard.svelte';
+	import DataCard from '@components/DataCard.svelte';
 	import { isCargoFlight, isPassengerFlight, toTicket } from '$lib/foreign/api.svelte';
+	import { toast } from 'svelte-daisy-toast';
 
 	var flights: Flight[] = $state([]);
 
 	onMount(async () => {
-		const res = await auth.getFlights();
+		const res = await auth.getFlights().catch(() => {
+			toast({ message: 'Failed to fetch flights', type: 'error' });
+			return [];
+		});
 		flights = res;
 	});
 
@@ -60,6 +64,11 @@
 			};
 			auth.buyTicket(t);
 		}
+
+		toast({
+			message: 'Ticket bought!',
+			type: 'success'
+		});
 	}
 </script>
 
