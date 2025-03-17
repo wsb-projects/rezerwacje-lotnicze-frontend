@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { auth } from '$lib/auth.svelte';
-	import { onMount } from 'svelte';
 	import '../app.css';
 	import Toast, { toast } from 'svelte-daisy-toast';
 	import LoginForm from '@components/LoginForm.svelte';
@@ -8,13 +7,14 @@
 	import SvelteLogo from 'virtual:icons/logos/svelte-icon';
 	import { isAuthBad, isRegisterBad } from '$lib/foreign/api.svelte';
 	import { page } from '$app/state';
+
 	let { children } = $props();
 
 	var login_form = $state<HTMLDialogElement>();
 
-	async function login(email: string, password: string) {
+	async function login(username: string, password: string) {
 		login_form?.close();
-		const resp = await auth.login(email, password);
+		const resp = await auth.login(username, password);
 		if (isAuthBad(resp)) {
 			toast({ type: 'error', message: 'Failed to login: ' + resp.detail });
 		} else {
@@ -22,17 +22,17 @@
 		}
 	}
 
-	async function register(email: string, password: string) {
+	async function register(username: string, password: string) {
 		login_form?.close();
-		console.log('Registering:', email, password);
-		const resp = await auth.register(email, password);
+		console.log('Registering:', username, password);
+		const resp = await auth.register(username, password);
 		if (isRegisterBad(resp)) {
 			for (const err in resp.errors) {
 				toast({ type: 'error', message: err });
 			}
 		} else {
 			toast({ type: 'success', message: 'Registered successfully' });
-			await login(email, password);
+			await login(username, password);
 		}
 	}
 

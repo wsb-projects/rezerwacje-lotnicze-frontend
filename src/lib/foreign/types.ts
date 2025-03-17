@@ -90,7 +90,7 @@ export type TicketFor<T extends Flight> = T extends FlightCargo
 
 export interface AuthGood {
 	tokenType: 'Bearer';
-	accessToken: string;
+	token: string;
 	expiresIn: number;
 	refreshToken: string;
 }
@@ -112,5 +112,6 @@ export interface RegisterBad {
 		[key: string]: string[];
 	};
 }
+
 export type RegisterGood = void;
 export type Register = RegisterGood | RegisterBad;

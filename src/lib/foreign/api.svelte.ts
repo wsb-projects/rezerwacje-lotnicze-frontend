@@ -18,8 +18,8 @@ import {
 
 const endpoints = {
 	flights: '/api/Flight/GetFlights',
-	login: '/login',
-	register: '/register',
+	login: '/api/Auth/login',
+	register: '/api/Auth/register',
 	tickets: '/api/Ticket/Tickets'
 };
 
@@ -72,7 +72,7 @@ export class FlightsAPI {
 	}
 
 	async getTickets(): Promise<Ticket[]> {
-		const token = this.auth!.accessToken;
+		const token = this.auth!.token;
 		return fetch(this.url + endpoints.tickets, {
 			headers: {
 				Authorization: `Bearer ${token}`
@@ -82,7 +82,7 @@ export class FlightsAPI {
 
 	// TODO: type the response
 	async buyTicket(ticket: TicketReq): Promise<any> {
-		const token = this.auth!.accessToken;
+		const token = this.auth!.token;
 		return fetch(this.url + endpoints.tickets, {
 			method: 'POST',
 			headers: {
@@ -99,41 +99,46 @@ export class FlightsAPI {
 		saveStore();
 	}
 
-	async login(email: string, password: string): Promise<Auth> {
-		this.mail = email;
+	async login(username: string, password: string): Promise<Auth> {
+		this.mail = username;
 
-		return fetch(this.url + endpoints.login, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				email,
-				password,
-				twoFactorCode: 'string',
-				twoFactorRecoveryCode: 'string'
-			})
-		})
-			.then((response) => response.json())
-			.then((auth) => {
-				if (isAuthBad(auth)) {
-					this.auth = null;
-					return auth;
-				}
-				this.auth = auth;
-				saveStore({ mail: email, auth });
-				return auth;
+		try {
+			const response = await fetch(this.url + endpoints.login, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					username,
+					password,
+					twoFactorCode: 'string',
+					twoFactorRecoveryCode: 'string'
+				})
 			});
+
+			const auth = await response.json();
+
+			if (isAuthBad(auth)) {
+				this.auth = null;
+				return auth;
+			}
+
+			this.auth = auth;
+			saveStore({ mail: username, auth });
+			return auth;
+		} catch (error) {
+			throw error;
+		}
 	}
 
-	async register(email: string, password: string): Promise<Register> {
+	async register(username: string, password: string): Promise<Register> {
 		return fetch(this.url + endpoints.register, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				email,
+				username,
 				password
 			})
 		}).then((response) => (response.status == 200 ? void {} : response.json()));
@@ -141,7 +146,7 @@ export class FlightsAPI {
 }
 
 export function isAuthBad(auth: Auth): auth is AuthBad {
-	return (auth as any).accessToken == undefined;
+	return (auth as any).token == undefined;
 }
 
 export function isCargoFlight(flight: Flight): flight is FlightCargo {
