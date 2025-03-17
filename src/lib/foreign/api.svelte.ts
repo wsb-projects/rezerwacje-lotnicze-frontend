@@ -110,26 +110,23 @@ export class FlightsAPI {
 				},
 				body: JSON.stringify({
 					username,
-					password
+					password,
+					twoFactorCode: 'string',
+					twoFactorRecoveryCode: 'string'
 				})
 			});
 
-			console.log('response', response);
 			const auth = await response.json();
-			console.log('auth', auth);
 
 			if (isAuthBad(auth)) {
-				console.log('enter');
 				this.auth = null;
 				return auth;
 			}
 
-			console.log('save');
 			this.auth = auth;
 			saveStore({ mail: username, auth });
 			return auth;
 		} catch (error) {
-			console.error('Login failed:', error);
 			throw error;
 		}
 	}
